@@ -1,0 +1,14 @@
+.pAbout{
+  &__title{
+    text-align: center;
+    font-size: 20px;
+  }
+  &__nav{
+    text-align: center;
+    &-link{
+      color: #000;
+      text-decoration: none;
+    }
+  }
+  @import './about-me.scss';
+}

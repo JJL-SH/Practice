@@ -1,0 +1,19 @@
+.cMenu{
+  text-align: center;
+  &__list{
+    display: inline-block;
+    li{
+      display: inline;
+      border-right: solid 1px #000;
+      &:last-child{
+        border: 0;
+      }
+    }
+    &-item{
+      font-size: 14px;
+      padding: 0 10px;
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}

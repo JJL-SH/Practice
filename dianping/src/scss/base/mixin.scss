@@ -1,0 +1,25 @@
+@mixin arrow ($size, $border, $color, $direction) {
+  content: '';
+  display: inline-block;
+  height: $size;
+  width: $size;
+  border-left: solid $border $color;
+  border-bottom: solid $border $color;
+  @if ($direction==left) {
+    transform: rotate(45deg);
+  }
+  @else if ($direction==top) {
+    transform: rotate(45deg * 3);
+  }
+  @else if ($direction==right) {
+    transform: rotate(45deg * 5);
+  }
+  @else if ($direction==bottom) {
+    transform: rotate(45deg * 7);
+  }
+}
+@mixin ellipsis () {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

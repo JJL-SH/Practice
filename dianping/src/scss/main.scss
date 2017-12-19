@@ -1,0 +1,10 @@
+/* 样式表初始化 */
+@import './base/normalize.css';
+@import './base/config.scss';
+@import './base/mixin.scss';
+/* 字体库 */
+@import '../font/alibaba/iconfont.css';
+/* 页面主体 */
+@import './page/index.scss';
+@import './page/home.scss';
+@import './page/about.scss';
