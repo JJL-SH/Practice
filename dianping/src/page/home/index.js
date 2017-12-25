@@ -3,6 +3,7 @@ import Header from './header';
 import Download from './download';
 import Nav from './nav';
 import Headline from './headline';
+import Card from './card';
 import Loading from 'Component/loading';
 
 class Home extends Component {
@@ -12,7 +13,8 @@ class Home extends Component {
       loading: true,
       headlineData: [],
       valueData: [],
-      dayData: []
+      dayData: [],
+      cardData: []
     }
   }
   componentWillMount() {
@@ -27,7 +29,8 @@ class Home extends Component {
           headlineData: this._getObjData(res, 'headline').list,
           valueData: this._getObjData(res, 'czth').preferenceValueHuiVos,
           dayData: this._getObjData(res, 'ttlj').dayHuiVos,
-          loveData: this._getObjData(res, 'cnxh').guessYouVoList
+          loveData: this._getObjData(res, 'cnxh').guessYouVoList,
+          cardData: this._getObjData(res, 'rb').list
         })
       }, 500)
     }).catch((err) => {
@@ -49,7 +52,9 @@ class Home extends Component {
         <Header/>
         <Download/>
         <Nav/>
+
         {state.loading || <Headline datas={state.headlineData}/>}
+        {state.loading || <Card datas={state.cardData}/>}
         <div className="pHome__value"></div>
         <div className="pHome__day"></div>
         <div className="pHome__love"></div>
