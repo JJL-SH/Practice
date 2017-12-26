@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Header from './header';
-import Download from './download';
-import Nav from './nav';
-import Headline from './headline';
-import Card from './card';
+import Header from './Header';
+import Download from './Download';
+import Nav from './Nav';
+import Headline from './Headline';
+import Card from './Card';
+import More from './More';
 import Loading from 'Component/loading';
 
 class Home extends Component {
@@ -17,6 +18,7 @@ class Home extends Component {
       cardData: []
     }
   }
+
   componentWillMount() {
     fetch('http://localhost/demo/dianping/model.php',{
       method: 'POST'
@@ -37,12 +39,12 @@ class Home extends Component {
       console.log(err);
     })
   }
+
   _getObjData = (res, name) => {
     return _.find(res.data.moduleInfoList, (data) => {
       return data.moduleName === name
     }).moduleData.data;
   }
-
 
   render() {
     const state = this.state;
@@ -52,9 +54,18 @@ class Home extends Component {
         <Header/>
         <Download/>
         <Nav/>
-
         {state.loading || <Headline datas={state.headlineData}/>}
         {state.loading || <Card datas={state.cardData}/>}
+        {state.loading || <More
+          title="超值特惠"
+          link="http://www.baidu.com"
+          datas={state.valueData}
+        />}
+        {state.loading || <More
+          title="天天立减"
+          link="http://www.baidu.com"
+          datas={state.dayData}
+        />}
         <div className="pHome__value"></div>
         <div className="pHome__day"></div>
         <div className="pHome__love"></div>
