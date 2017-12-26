@@ -5,6 +5,7 @@ import Nav from './Nav';
 import Headline from './Headline';
 import Card from './Card';
 import More from './More';
+import Love from './Love';
 import Loading from 'Component/loading';
 
 class Home extends Component {
@@ -15,12 +16,13 @@ class Home extends Component {
       headlineData: [],
       valueData: [],
       dayData: [],
-      cardData: []
+      cardData: [],
+      loveData: []
     }
   }
 
   componentWillMount() {
-    fetch('http://localhost/demo/dianping/model.php',{
+    fetch('http://192.168.31.238//demo/dianping/model.php',{
       method: 'POST'
     }).then((res) => {
       return res.json();
@@ -66,9 +68,7 @@ class Home extends Component {
           link="http://www.baidu.com"
           datas={state.dayData}
         />}
-        <div className="pHome__value"></div>
-        <div className="pHome__day"></div>
-        <div className="pHome__love"></div>
+        <Love datas={state.loveData}/>
         {state.loading && <Loading/>}
       </div>
     )

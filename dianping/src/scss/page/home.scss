@@ -243,7 +243,7 @@
     margin: 10px 0;
     height: 70px;
     display: flex;
-    background:#fff linear-gradient(0,#e1e1e1,#e1e1e1 50%,transparent 0) 100% 100%/100% 1px no-repeat;
+    background:#fff;
     &-item{
       width: 50%;
       text-decoration: none;
@@ -321,6 +321,78 @@
     &-price{
       font-size: 14px;;
       color: #f63;
+    }
+  }
+  &__love{
+    margin: 10px 0;
+    background: #fff;
+    padding: 10px;
+    &-head{
+      margin: 0;
+      font-size: 14px;
+      color: #999;
+    }
+    &-link{
+      display: block;
+      padding: 0 0 0 100px;
+      margin: 10px 0;
+      height: 90px;
+      position: relative;
+      text-decoration: none;
+      color: #333;
+    }
+    &-img{
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      width: 90px;
+      height: 90px;
+    }
+    &-not{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 12px;
+      background: #000;
+      color: #e5bf86;
+    }
+    &-title{
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: bold;
+    }
+    &-distence{
+      float: right;
+      font-size: 12px;
+      color: #999;
+    }
+    &-shop{
+      @include ellipsis;
+    }
+    &-desc{
+      font-size: 12px;
+      color: #999;
+      margin: 10px 0;
+      @include ellipsis;
+    }
+    &-sold{
+      float: right;
+      font-size: 12px;
+      color: #999;
+    }
+    &-price{
+      font-size: 18px;
+      color: #f63;
+    }
+    &-oldprice{
+      padding: 0 0 0 10px;
+      font-size: 12px;
+      color: #999;
     }
   }
 }

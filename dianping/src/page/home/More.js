@@ -19,7 +19,6 @@ class More extends Component {
         <div className="pHome__more-content">
           {
             props.datas.map((data, index) => {
-              console.log(data);
               return <Link key={index} className="pHome__more-item" to="">
                 <img className="pHome__more-img" src={data.imageUrl} width="100%"/>
                 <h2 className="pHome__more-hd">{data.shortTitle}</h2>
