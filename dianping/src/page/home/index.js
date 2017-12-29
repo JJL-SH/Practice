@@ -68,7 +68,7 @@ class Home extends Component {
           link="http://www.baidu.com"
           datas={state.dayData}
         />}
-        <Love datas={state.loveData}/>
+        {state.loading || <Love datas={state.loveData}/>}
         {state.loading && <Loading/>}
       </div>
     )

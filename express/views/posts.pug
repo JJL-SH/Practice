@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+  .post-content
+    .four.wide.column
+      a.avatar.avatar-link(href=`/posts?author=${post.author._id}` data-title=`${post.author.name} | ${{m:'男',f:'女',x:'保密'}[post.author.gender]}` data-content=`${pot.author.bio}`)
+        img.avatar(src=`/img/${post.avatar.avatar}`)
+    .eight.wide.column
+      .ui.segment
+        h3
+          a(href=`/posts/${post._id}`) post.title
