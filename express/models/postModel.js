@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const marked = require('marked')
 
 var PostSchema = new Schema({
   author: {
@@ -20,8 +19,18 @@ var PostSchema = new Schema({
 PostSchema.pre('save', (next) => {
   next()
 })
-
 PostSchema.statics = {
+  getPostById: function(postId) {
+    return this
+      .findOne({
+        _id: postId
+      })
+      .populate({
+        path: 'author',
+        model: 'User'
+      })
+      .exec()
+  },
   getPosts: function(author) {
     let query = {}
 
@@ -32,10 +41,16 @@ PostSchema.statics = {
     return this
       .find(query)
       .populate({
-        path: 'xxxx',
+        path: 'author',
         model: 'User'
       })
       .sort({_id: -1})
+      .exec()
+  },
+  incPv: function(postId) {
+    return this
+      .update({_id: postId}, {$inc: {pv: 1}})
+      .exec()
   }
 }
 
