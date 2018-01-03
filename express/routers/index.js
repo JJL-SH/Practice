@@ -18,3 +18,5 @@ module.exports = (app) => {
     res.redirect('/posts')
   })
 }
+
+// one
