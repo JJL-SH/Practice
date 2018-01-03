@@ -18,7 +18,3 @@ module.exports = (app) => {
     res.redirect('/posts')
   })
 }
-
-// one
-// two
-// three
