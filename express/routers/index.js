@@ -18,3 +18,9 @@ module.exports = (app) => {
     res.redirect('/posts')
   })
 }
+<<<<<<< HEAD
+=======
+
+// one
+// two
+>>>>>>> parent of 17ed69b... three
