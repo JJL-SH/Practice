@@ -1,0 +1,16 @@
+extends layout.pug
+
+block content
+  .ui.grid
+    .four.wide.column
+      a.avatar(href=`/posts?author=${user._id}`, data-title=`${user.name} | ${{m:'男',f:'女',x:'保密'}[user.gender]}`, data-content=`${user.bio}`)
+        img.avatar(src=`/images/${user.avatar}`)
+    .eight.wide.column
+      form.ui.form.segment(action=`/posts/${_id}/edit`, method="post")
+        .field.required
+          label 标题
+          input(type="text", name="title", value=`${title}`)
+        .field.required
+          label 内容
+          textarea(name="content") #{content}
+        input.ui.button(type="submit", value="发布")

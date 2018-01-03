@@ -19,6 +19,7 @@ var PostSchema = new Schema({
 PostSchema.pre('save', (next) => {
   next()
 })
+
 PostSchema.statics = {
   getPostById: function(postId) {
     return this
@@ -29,6 +30,18 @@ PostSchema.statics = {
         path: 'author',
         model: 'User'
       })
+      .exec()
+  },
+  updatePostById: function(postId, data) {
+    return this
+      .update({
+        _id: postId
+      }, {$set: data})
+      .exec()
+  },
+  delPostById: function(postId) {
+    return this
+      .remove({_id: postId})
       .exec()
   },
   getPosts: function(author) {

@@ -6,6 +6,9 @@ const flash = require('connect-flash');
 const config = require('config-lite')(__dirname);
 const routes = require('./routers');
 const pkg = require('./package');
+const winston = require('winston')
+const expressWinston = require('express-winston')
+const moment = require('moment')
 
 const app = express();
 require('./lib/mongo')
@@ -55,7 +58,30 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error').toString()
   next()
 })
+
+app.use(expressWinston.logger({
+  transports: [
+    new winston.transports.Console({
+      json: true,
+      colorize: true
+    }),
+    new winston.transports.File({
+      filename: `logs/${moment().format('YYYY-MM-DD')}.log`
+    })
+  ]
+}))
 routes(app);
+app.use(expressWinston.errorLogger({
+  transports: [
+    new winston.transports.Console({
+      json: true,
+      colorize: true
+    }),
+    new winston.transports.File({
+      filename: `logs/${moment().format('YYYY-MM-DD')}.log`
+    })
+  ]
+}))
 
 app.listen(config.port, () => {
   console.log(`${pkg.name} listening on port ${config.port}`);
