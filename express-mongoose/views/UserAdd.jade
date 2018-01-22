@@ -1,0 +1,7 @@
+extends layout.jade
+
+block content
+  form(action="/users/add", method="post")
+    input(type="text", name="username")
+    input(type="email", name="email")
+    button(type="submit") Submit
