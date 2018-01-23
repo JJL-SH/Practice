@@ -2,6 +2,10 @@ extends layout.jade
 
 block content
   form(action="/users/add", method="post")
+    label(for="") 姓名：
     input(type="text", name="username")
+    br
+    label(for="") 邮箱：
     input(type="email", name="email")
+    br
     button(type="submit") Submit

@@ -1,0 +1,8 @@
+extends layout.jade
+
+block content
+  ul
+    li 姓名：#{username}
+    li 邮箱：#{email}
+    li
+      a(href="/users/edit/#{_id}") 编辑

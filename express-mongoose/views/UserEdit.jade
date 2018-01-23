@@ -1,0 +1,7 @@
+extends layout.jade
+
+block content
+  form(action="/users/edit/#{_id}", method="post")
+    input(type="text", name="username", value="#{username}")
+    input(type="email", name="email", value="#{email}")
+    button(type="submit") Update

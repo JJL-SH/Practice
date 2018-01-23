@@ -13,5 +13,17 @@ block content
         td
           div
             a(href="/users/detail/#{user._id}") 查看
-            a(href="/users/edit/${user._id}") 编辑
-            //- a(href="#", class="del" data-id="#{}")
+            a(href="/users/edit/#{user._id}") 编辑
+            a(href="javascript:void(0)", class="del", data-id="#{user._id}") 删除
+  script.
+    $('.del').on('click', function(){
+      var id = $(this).data('id');
+
+      $.ajax({
+        url: '/users/del?id=' + id,
+        type: 'delete',
+        success: function(res) {
+          location.reload();
+        }
+      })
+    })
