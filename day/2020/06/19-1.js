@@ -24,21 +24,22 @@ var throttle = function (fn, interval = 100) {
   };
 };
 
-var CreateDiv = (function () {
-  var instance;
-  var CreateDiv = function (html) {
-    if (instance) {
-      return instance;
-    }
-    this.html = html;
-    this.init();
-    return (instance = this);
-  };
-  CreateDiv.prototype.init = function () {
-    var div = document.createElement("div");
-    div.innerHTML = this.html;
-    document.body.appendChild(div);
-  };
+var CreateDiv = function (html) {
+  this.html = html;
+  this.init();
+};
+CreateDiv.prototype.init = function () {
+  var div = document.createElement("div");
+  div.innerHTML = this.html;
+  document.body.appendChild(div);
+};
 
-  return CreateDiv;
+var ProxySingletonCreateDiv = (function () {
+  var instance;
+  return function (html) {
+    if (!instance) {
+      return (instance = new CreateDiv());
+    }
+    return instance;
+  };
 })();
