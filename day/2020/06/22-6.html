@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="checkbox" name="" id="1" />1
+    <input type="checkbox" name="" id="2" />2
+    <input type="checkbox" name="" id="3" />3
+    <input type="checkbox" name="" id="4" />4
+    <input type="checkbox" name="" id="5" />5
+    <input type="checkbox" name="" id="6" />6
+    <input type="checkbox" name="" id="7" />7
+    <input type="checkbox" name="" id="8" />8
+    <input type="checkbox" name="" id="9" />9
+  </body>
+</html>
+<script>
+  var synchronouseFile = function (id) {
+    console.log("开始同步文件，ID为：" + id);
+  };
+  var proxySynchronousFile = (function () {
+    var cacheArr = [];
+    var timer;
+
+    return function (id) {
+      cacheArr.push(id);
+
+      if (timer) {
+        return;
+      }
+
+      timer = setTimeout(function () {
+        synchronouseFile(cacheArr.join(","));
+        clearTimeout(timer);
+        timer = null;
+        cacheArr.length = 0;
+      }, 2000);
+    };
+  })();
+  var checkbox = document.getElementsByTagName("input");
+
+  for (var i = 0, c; (c = checkbox[i++]); ) {
+    c.onclick = function (e) {
+      if (this.checked === true) {
+        proxySynchronousFile(this.id);
+      }
+    };
+  }
+</script>
