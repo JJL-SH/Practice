@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  var myImage = (function () {
+    var imgNode = document.createElement("img");
+    document.body.appendChild(imgNode);
+
+    return function (src) {
+      imgNode.src = src;
+    };
+  })();
+  var proxyImg = (function () {
+    var img = new Image();
+    console.log(this.src);
+    img.onload = function () {
+      myImage(this.src);
+    };
+
+    return function (src) {
+      myImage(
+        "https://hbimg.huabanimg.com/0d674b7b238b31b5857e8829e285c70d19adafa91294b-NJdHI4_fw658/format/webp"
+      );
+      img.src = src;
+    };
+  })();
+
+  proxyImg("https://img1.qunarzz.com/travel/d6/1701/c3/ad1a5ce13c3e2bb5.jpg");
+</script>
