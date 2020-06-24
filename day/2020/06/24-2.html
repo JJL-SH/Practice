@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="count">Click</button>
+    <div id="show"></div>
+  </body>
+</html>
+<script src="./24-1.js"></script>
+<script>
+  var a = (function () {
+    var count = 0;
+    var button = document.getElementById("count");
+
+    button.onclick = function () {
+      Event.trigger("add", count++);
+    };
+  })();
+  var b = (function () {
+    var div = document.getElementById("show");
+    Event.listen("add", function (count) {
+      div.innerHTML = count;
+    });
+  })();
+</script>
