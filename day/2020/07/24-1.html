@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="ball"
+      style="position: absolute; background: #000; width: 50px; height: 50px;"
+    ></div>
+    <input type="text" id="pos" />
+    <button id="mov">Move</button>
+    <button id="cancel">Cancel</button>
+  </body>
+</html>
+<script>
+  var ball = document.getElementById("ball");
+  var pos = document.getElementById("pos");
+  var mov = document.getElementById("mov");
+  var cancel = document.getElementById("cancel");
+
+  var MoveCommand = function (receiver, pos) {
+    this.receiver = receiver;
+    this.pos = pos;
+    this.oldPos = null;
+  };
+  MoveCommand.prototype.execute = function () {
+    this.receiver.start("left", this.pos, 1000, "strongEaseOut");
+    this.oldPos = this.receiver.dom.getBoundingClientRect()[
+      this.receiver.propertyName
+    ];
+  };
+  MoveCommand.prototype.undo = function () {
+    this.receiver.start("left", this.oldPos, 1000, "strongEaseOut");
+  };
+  var moveCommand;
+  mov.onclick = function () {
+    var animate = new Animation(ball);
+    moveCommand = new MoveCommand(animate, pos.value);
+    moveCommand.execute();
+  };
+  cancel.onclick = function () {
+    moveCommand.undo();
+  };
+</script>
