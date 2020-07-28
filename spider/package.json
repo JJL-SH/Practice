@@ -14,7 +14,7 @@
     "gbk": "^0.1.0",
     "iconv-lite": "^0.4.19",
     "jade": "~1.11.0",
-    "mongoose": "^5.0.3",
+    "mongoose": "^5.7.5",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
   },
