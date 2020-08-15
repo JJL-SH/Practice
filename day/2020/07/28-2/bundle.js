@@ -67,3 +67,12 @@ const bundle = (file) => {
   })(depsGraph)`;
 };
 parseModules("./src/index.js");
+
+(function(graph){
+  function require(file) {
+    (function(code){
+      eval(code)
+    })(graph[file].code)
+  }
+  require(file)
+})(depsGraph)
