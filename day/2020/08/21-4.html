@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 防抖
+  const debounce = (fun, delay = 500) => {
+    let _timer = null;
+
+    return function (...args) {
+      clearTimeout(_timer);
+      _timer = setTimeout(() => {
+        fun.apply(this, args);
+      }, delay);
+    };
+  };
+  const throttle = (fun, delay = 500) => {
+    let _timer = null;
+
+    return function (...args) {
+      if (!!_timer) {
+        return false;
+      }
+      _timer = setTimeout(() => {
+        fun.apply(this, args);
+        clearTimeout(_timer);
+        _timer = null;
+      }, delay);
+    };
+  };
+
+  window.addEventListener(
+    "mousemove",
+    throttle(() => {
+      console.log(1);
+    })
+  );
+</script>
