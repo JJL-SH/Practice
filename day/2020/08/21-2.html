@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .box {
+        margin: 100px auto;
+        border: solid 1px green;
+        position: relative;
+      }
+      .box:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background: red;
+      }
+      .point {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 20;
+      }
+      .pointBig {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .point li {
+        width: 30px;
+        height: 30px;
+        border: solid 5px #fff;
+        background: #666;
+        border-radius: 50%;
+      }
+      .line {
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        z-index: 11;
+        top: 50%;
+        left: 0;
+        right: 0;
+        line-height: 2px;
+      }
+      .line li {
+        flex: 1;
+        overflow: hidden;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul class="point">
+        <li class="pointBig"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="line">
+        <li style="visibility: hidden;">
+          ················································································
+        </li>
+        <li style="visibility: hidden;">
+          ················································································
+        </li>
+        <li>
+          ················································································
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
