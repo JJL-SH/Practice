@@ -33,7 +33,7 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^5.5.0",
     "imagemin-webpack-plugin": "^1.5.2",
     "node-sass": "^4.7.2",
     "open-browser-webpack-plugin": "0.0.5",
@@ -50,7 +50,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-swipe": "^5.1.0",
+    "react-swipe": "^5.1.1",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "whatwg-fetch": "^2.0.3"
