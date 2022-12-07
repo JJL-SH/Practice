@@ -10,7 +10,7 @@
     "bufferhelper": "^0.2.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "express": "~4.15.5",
+    "express": "~4.17.3",
     "gbk": "^0.1.0",
     "iconv-lite": "^0.4.19",
     "jade": "~1.11.0",
